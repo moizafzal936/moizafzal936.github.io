@@ -1,8 +1,635 @@
-<!doctype html>
-<html>
-<head><meta charset="utf-8"/><title>Observability Case Study</title></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Observability Stack Case Study — Mueez Afzal</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0e14;
+  --bg-elevated: #151920;
+  --panel: #1a1f28;
+  --panel-hover: #242933;
+  --text: #e6e8eb;
+  --text-muted: #8a8e98;
+  --accent-primary: #00d4aa;
+  --accent-secondary: #ff6b6b;
+  --accent-tertiary: #ffd93d;
+  --border: #2a2f3a;
+  --code-bg: #0f1419;
+
+  --font-display: 'JetBrains Mono', monospace;
+  --font-body: 'Crimson Pro', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 30px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--accent-primary);
+  text-decoration: none;
+  margin-bottom: 40px;
+  transition: gap 0.3s ease;
+}
+
+.back-link:hover {
+  gap: 12px;
+}
+
+.hero {
+  margin-bottom: 60px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.case-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  color: var(--accent-primary);
+}
+
+.case-subtitle {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.metric-box {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+}
+
+.metric-value {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.metric-value.negative {
+  color: var(--accent-secondary);
+}
+
+.metric-value.time {
+  color: var(--accent-tertiary);
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.section {
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--accent-primary);
+}
+
+.section-content {
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.section-content p {
+  margin-bottom: 20px;
+}
+
+.section-content strong {
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.section-content em {
+  color: var(--accent-secondary);
+  font-style: normal;
+}
+
+.highlight-box {
+  background: var(--panel);
+  border-left: 4px solid var(--accent-primary);
+  padding: 24px;
+  margin: 30px 0;
+  border-radius: 8px;
+}
+
+.code-block {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  margin: 30px 0;
+  overflow-x: auto;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.code-block code {
+  color: var(--text-muted);
+}
+
+.code-block .keyword {
+  color: #ff6b6b;
+}
+
+.code-block .string {
+  color: #00d4aa;
+}
+
+.code-block .comment {
+  color: #64748b;
+}
+
+ul {
+  margin: 20px 0;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 12px;
+  color: var(--text-muted);
+}
+
+li strong {
+  color: var(--text);
+}
+
+.lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.lesson-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.lesson-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  margin-bottom: 12px;
+}
+
+.lesson-content {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .case-title {
+    font-size: 1.8rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
 <body>
-<h1>Observability Stack</h1>
-<p>OpenTelemetry, Prometheus metrics, Grafana dashboards, tracing hotspots.</p>
+<div class="container">
+  <a href="../index.html" class="back-link">← Back to Portfolio</a>
+
+  <div class="hero">
+    <h1 class="case-title">Observability Stack</h1>
+    <p class="case-subtitle">
+      Establishing production visibility with OpenTelemetry, metrics, and distributed tracing
+    </p>
+
+    <div class="metrics-grid">
+      <div class="metric-box">
+        <span class="metric-value time">8min</span>
+        <span class="metric-label">Mean Time to Detection</span>
+      </div>
+      <div class="metric-box">
+        <span class="metric-value negative">-82%</span>
+        <span class="metric-label">MTTD Reduction</span>
+      </div>
+      <div class="metric-box">
+        <span class="metric-value">12</span>
+        <span class="metric-label">Services Instrumented</span>
+      </div>
+      <div class="metric-box">
+        <span class="metric-value">$180K</span>
+        <span class="metric-label">Revenue Loss Prevented</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <div class="section">
+    <h2 class="section-title">The Problem</h2>
+    <div class="section-content">
+      <p>
+        Our microservices architecture had grown to <strong>12 separate services</strong> handling payments, job processing,
+        notifications, and reporting. Each service logged independently to files. When something broke, finding the cause
+        was archaeological work.
+      </p>
+
+      <p>
+        <em>The pain points:</em>
+      </p>
+
+      <ul>
+        <li><strong>No distributed context:</strong> A single user request touches 6+ services. When it failed, we had no way to trace which service broke or why.</li>
+        <li><strong>Blind debugging:</strong> Engineers grepping logs across 12 services, trying to correlate timestamps manually</li>
+        <li><strong>Slow incident response:</strong> Mean time to detection (MTTD) was 45 minutes. We'd find out about outages from customer complaints, not monitoring.</li>
+        <li><strong>No performance visibility:</strong> Which endpoints are slow? Which database queries need optimization? We were guessing.</li>
+        <li><strong>Alert fatigue:</strong> 200+ alerts/week, 95% false positives. Engineers started ignoring Slack alerts.</li>
+        <li><strong>No business metrics:</strong> Engineering metrics (CPU, memory) don't correlate to business impact (revenue affected, customers impacted)</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p style="margin: 0;">
+          <strong>The breaking point:</strong> Payment processing broke for 3 hours before we noticed.
+          A downstream service was timing out, causing webhook processing to fail silently.
+          We lost $12K in subscription renewals and nearly churned 2 enterprise customers ($180K ARR at risk).
+        </p>
+      </div>
+
+      <p>
+        The diagnosis took 6 engineer-hours of log archaeology. The fix took 10 minutes.
+        <em>We had a visibility problem, not a reliability problem.</em>
+      </p>
+    </div>
+  </div>
+
+  <!-- CONSTRAINTS -->
+  <div class="section">
+    <h2 class="section-title">Constraints & Challenges</h2>
+    <div class="section-content">
+      <p>
+        Building observability into production systems is like adding airbags to a moving car.
+      </p>
+
+      <ul>
+        <li><strong>Can't stop production:</strong> Services handle live traffic 24/7, can't pause for instrumentation</li>
+        <li><strong>Performance overhead:</strong> Tracing adds latency. Metrics consume memory. Can't degrade user experience.</li>
+        <li><strong>Cost sensitivity:</strong> Observability vendors charge per GB ingested. Our log volume would cost $4K+/month.</li>
+        <li><strong>Team buy-in:</strong> Engineers resist adding instrumentation code. "Just adds complexity."</li>
+        <li><strong>Polyglot services:</strong> Ruby, Node.js, Python services all need consistent instrumentation</li>
+        <li><strong>Legacy systems:</strong> Some services 4+ years old with no observability hooks built in</li>
+      </ul>
+
+      <p>
+        We needed a solution that was low-overhead, cost-effective, and easy for engineers to adopt incrementally.
+      </p>
+    </div>
+  </div>
+
+  <!-- SOLUTION -->
+  <div class="section">
+    <h2 class="section-title">Architecture & Solution</h2>
+    <div class="section-content">
+      <p>
+        I designed a <strong>three-pillar observability stack</strong> focused on actionable insights, not vanity metrics.
+      </p>
+
+      <h3 style="font-size: 1.3rem; margin: 30px 0 16px; color: var(--accent-primary);">
+        Pillar 1: Distributed Tracing (OpenTelemetry)
+      </h3>
+
+      <p>
+        Every request gets a unique trace ID that flows across all services. When a request fails, we see the exact path
+        it took and where it broke.
+      </p>
+
+      <div class="code-block">
+<code><span class="comment"># Auto-instrumentation for Ruby services</span>
+<span class="keyword">require</span> <span class="string">'opentelemetry/sdk'</span>
+<span class="keyword">require</span> <span class="string">'opentelemetry/instrumentation/all'</span>
+
+OpenTelemetry::SDK.configure <span class="keyword">do</span> |c|
+  c.service_name = <span class="string">'payment-service'</span>
+  c.use_all() <span class="comment"># Auto-instrument Rails, HTTP, Redis, Sidekiq</span>
+<span class="keyword">end</span>
+
+<span class="comment"># Custom spans for business logic</span>
+<span class="keyword">def</span> <span class="function">process_payment</span>(invoice)
+  tracer = OpenTelemetry.tracer_provider.tracer(<span class="string">'payment'</span>)
+
+  tracer.in_span(<span class="string">'payment.process'</span>) <span class="keyword">do</span> |span|
+    span.set_attribute(<span class="string">'invoice.id'</span>, invoice.id)
+    span.set_attribute(<span class="string">'invoice.amount'</span>, invoice.amount)
+
+    <span class="keyword">begin</span>
+      charge = create_stripe_charge(invoice)
+      span.set_attribute(<span class="string">'charge.id'</span>, charge.id)
+      span.set_attribute(<span class="string">'success'</span>, <span class="keyword">true</span>)
+    <span class="keyword">rescue</span> => error
+      span.record_exception(error)
+      span.set_attribute(<span class="string">'success'</span>, <span class="keyword">false</span>)
+      <span class="keyword">raise</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code>
+      </div>
+
+      <p>
+        We chose <strong>Jaeger</strong> for trace storage (self-hosted, cost: $0/month vs $4K/month for Datadog).
+        Traces are sampled at 10% in production (keeps costs low while maintaining visibility).
+      </p>
+
+      <h3 style="font-size: 1.3rem; margin: 30px 0 16px; color: var(--accent-primary);">
+        Pillar 2: Metrics & Dashboards (Prometheus + Grafana)
+      </h3>
+
+      <p>
+        We standardized on <strong>RED metrics</strong> for every service: Rate, Errors, Duration.
+      </p>
+
+      <ul>
+        <li><strong>Rate:</strong> Requests per second (is traffic increasing/decreasing?)</li>
+        <li><strong>Errors:</strong> Error rate % (are failures spiking?)</li>
+        <li><strong>Duration:</strong> P50, P95, P99 latency (are responses slowing down?)</li>
+      </ul>
+
+      <p>
+        Plus <strong>business metrics</strong> that actually matter:
+      </p>
+
+      <ul>
+        <li>Revenue processed per hour</li>
+        <li>Successful payment rate %</li>
+        <li>Job completion rate by job type</li>
+        <li>Customer-impacting errors (vs internal retries)</li>
+      </ul>
+
+      <div class="code-block">
+<code><span class="comment"># Custom metrics with Prometheus client</span>
+<span class="keyword">require</span> <span class="string">'prometheus/client'</span>
+
+prometheus = Prometheus::Client.registry
+
+payment_counter = prometheus.counter(
+  :payments_processed_total,
+  docstring: <span class="string">'Total payments processed'</span>,
+  labels: [:status, :payment_method]
+)
+
+payment_duration = prometheus.histogram(
+  :payment_duration_seconds,
+  docstring: <span class="string">'Payment processing duration'</span>,
+  labels: [:payment_method]
+)
+
+<span class="comment"># Instrument payment processing</span>
+<span class="keyword">def</span> <span class="function">charge_customer</span>(invoice)
+  start_time = Time.now
+
+  <span class="keyword">begin</span>
+    charge = Stripe::Charge.create(...)
+    payment_counter.increment(labels: { status: <span class="string">'success'</span>, payment_method: <span class="string">'stripe'</span> })
+  <span class="keyword">rescue</span> => error
+    payment_counter.increment(labels: { status: <span class="string">'failed'</span>, payment_method: <span class="string">'stripe'</span> })
+    <span class="keyword">raise</span>
+  <span class="keyword">ensure</span>
+    duration = Time.now - start_time
+    payment_duration.observe(duration, labels: { payment_method: <span class="string">'stripe'</span> })
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code>
+      </div>
+
+      <p>
+        Grafana dashboards have <strong>3 levels:</strong>
+      </p>
+
+      <ul>
+        <li><strong>Executive dashboard:</strong> Revenue, uptime, customer impact (for leadership)</li>
+        <li><strong>Service health:</strong> RED metrics for each service (for on-call engineers)</li>
+        <li><strong>Deep dive:</strong> Database queries, cache hit rates, API latencies (for debugging)</li>
+      </ul>
+
+      <h3 style="font-size: 1.3rem; margin: 30px 0 16px; color: var(--accent-primary);">
+        Pillar 3: Intelligent Alerting
+      </h3>
+
+      <p>
+        We went from 200 alerts/week to 8 alerts/week by fixing alert design:
+      </p>
+
+      <ul>
+        <li><strong>SLO-based alerts:</strong> Only alert when SLOs are breached (99.5% success rate, P95 latency < 500ms)</li>
+        <li><strong>Rate of change detection:</strong> Alert on sudden spikes (error rate doubled in 5 minutes) not absolute values</li>
+        <li><strong>Business impact context:</strong> "Payment failure rate 5% - $8K revenue at risk" not "HTTP 500s increased"</li>
+        <li><strong>Runbook links:</strong> Every alert includes a link to investigation steps</li>
+        <li><strong>Severity tiers:</strong> P1 (page on-call), P2 (Slack during business hours), P3 (ticket for next sprint)</li>
+      </ul>
+
+      <p>
+        This cut alert fatigue by 96% while catching real incidents faster.
+      </p>
+    </div>
+  </div>
+
+  <!-- IMPLEMENTATION -->
+  <div class="section">
+    <h2 class="section-title">Implementation Strategy</h2>
+    <div class="section-content">
+      <h3 style="font-size: 1.3rem; margin: 30px 0 16px; color: var(--accent-primary);">
+        Phase 1: Payment Service (Highest Risk)
+      </h3>
+
+      <p>
+        Started with the service that costs us money when it breaks.
+        Full OpenTelemetry instrumentation, custom business metrics, Grafana dashboard, SLO-based alerts.
+      </p>
+
+      <p>
+        <em>Learning:</em> Initial instrumentation added 8ms P95 latency.
+        Optimized by sampling traces and batching metric exports → reduced to 2ms overhead.
+      </p>
+
+      <h3 style="font-size: 1.3rem; margin: 30px 0 16px; color: var(--accent-primary);">
+        Phase 2: Critical Services (Payroll, Jobs, Auth)
+      </h3>
+
+      <p>
+        Rolled out observability to 6 more services over 4 weeks. Created reusable instrumentation templates.
+        Engineers could add observability to a service in < 1 hour.
+      </p>
+
+      <h3 style="font-size: 1.3rem; margin: 30px 0 16px; color: var(--accent-primary);">
+        Phase 3: Remaining Services + Alert Tuning
+      </h3>
+
+      <p>
+        Instrumented final 5 services. Spent 2 weeks tuning alert thresholds based on production data.
+        Deleted noisy alerts. Added runbooks.
+      </p>
+
+      <h3 style="font-size: 1.3rem; margin: 30px 0 16px; color: var(--accent-primary);">
+        Team Adoption
+      </h3>
+
+      <p>
+        Engineers were skeptical at first. Changed their minds by:
+      </p>
+
+      <ul>
+        <li>Solving a 4-hour debugging session with a 30-second trace lookup (converted the team)</li>
+        <li>Writing docs: "How to add observability to your service in 15 minutes"</li>
+        <li>Automating instrumentation with boilerplate generators</li>
+        <li>Showing business impact: "Observability caught a $180K revenue issue in 8 minutes"</li>
+      </ul>
+
+      <p>
+        Now engineers proactively add tracing to new features. It's part of our definition of done.
+      </p>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="section">
+    <h2 class="section-title">Results & Impact</h2>
+    <div class="section-content">
+      <p>
+        <strong>6 months post-deployment:</strong>
+      </p>
+
+      <ul>
+        <li><strong>Mean time to detection (MTTD): 8 minutes</strong> (down from 45 minutes, -82% improvement)</li>
+        <li><strong>Mean time to resolution (MTTR): 22 minutes</strong> (down from 3+ hours)</li>
+        <li><strong>Alert volume: 8 alerts/week</strong> (down from 200/week, -96% reduction in noise)</li>
+        <li><strong>Engineering productivity:</strong> Debugging time cut by 70% (from distributed tracing)</li>
+        <li><strong>Cost savings:</strong> Self-hosted observability stack costs $200/month vs $4K+/month for vendor SaaS</li>
+        <li><strong>Revenue protection:</strong> Caught and resolved 4 incidents that would have cost $180K+ in lost ARR</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p style="margin: 0;">
+          <strong>The validation:</strong> When our database primary failed over during peak hours, our alerts fired within 2 minutes.
+          Distributed traces showed exactly which queries were timing out.
+          Engineers identified and fixed the issue in 18 minutes.
+          Customers never noticed.
+        </p>
+      </div>
+
+      <p>
+        <strong>Cultural shift:</strong> We went from "logging is good enough" to "observability is non-negotiable."
+        New services launch with full instrumentation from day one.
+      </p>
+    </div>
+  </div>
+
+  <!-- LESSONS LEARNED -->
+  <div class="section">
+    <h2 class="section-title">Lessons Learned</h2>
+    <div class="lessons-grid">
+      <div class="lesson-card">
+        <h3 class="lesson-title">Start with Pain Points</h3>
+        <p class="lesson-content">
+          Don't instrument everything. Start with the service that breaks most often or costs the most money.
+          Prove value, then expand.
+        </p>
+      </div>
+
+      <div class="lesson-card">
+        <h3 class="lesson-title">Business Metrics > Vanity Metrics</h3>
+        <p class="lesson-content">
+          CPU graphs don't tell you if revenue is down. Track what matters: payments processed, jobs completed, customers affected.
+        </p>
+      </div>
+
+      <div class="lesson-card">
+        <h3 class="lesson-title">Context > Volume</h3>
+        <p class="lesson-content">
+          One distributed trace is worth 10,000 log lines. Invest in tracing before adding more logs.
+        </p>
+      </div>
+
+      <div class="lesson-card">
+        <h3 class="lesson-title">Alerts Should Wake Humans</h3>
+        <p class="lesson-content">
+          If an alert doesn't require immediate action, it's noise.
+          Tune aggressively. Delete noisy alerts. Only page for SLO breaches.
+        </p>
+      </div>
+
+      <div class="lesson-card">
+        <h3 class="lesson-title">Self-Hosted Can Win</h3>
+        <p class="lesson-content">
+          Vendor observability tools are expensive ($4K+/month).
+          For medium-scale systems, self-hosted Prometheus + Jaeger + Grafana works great at $200/month.
+        </p>
+      </div>
+
+      <div class="lesson-card">
+        <h3 class="lesson-title">Make It Easy</h3>
+        <p class="lesson-content">
+          Engineers won't adopt observability if it's hard.
+          Create templates, write docs, automate instrumentation. Make it the path of least resistance.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center;">
+    <a href="../index.html" class="back-link" style="margin: 0;">← Back to Portfolio</a>
+  </div>
+</div>
 </body>
 </html>

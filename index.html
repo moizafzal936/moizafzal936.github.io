@@ -3,143 +3,1249 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Mueez Afzal — Backend Systems Engineer</title>
+<title>Mueez Afzal — Systems Engineer, Payments & Distributed Infrastructure</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Minimal SEO structured data -->
+<!-- Elite Typography: JetBrains Mono + Crimson Pro -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- SEO Optimization -->
+<meta name="description" content="Mueez Afzal - Systems Engineer specializing in payment infrastructure, distributed job orchestration, and production reliability. 99.98% billing uptime, 120K+ jobs/month.">
+<meta property="og:title" content="Mueez Afzal — Systems Engineer">
+<meta property="og:description" content="Payment infrastructure & distributed systems. 99.98% billing reliability.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/profile.png">
+
+<!-- Structured Data -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Mueez Afzal","jobTitle":"Backend Systems Engineer","url":"","sameAs":["https://github.com/moizafzal936","https://linkedin.com/in/mueez-afzal"]}
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mueez Afzal",
+  "jobTitle": "Lead Backend Systems Engineer",
+  "description": "Specializes in payment infrastructure, distributed job orchestration, and production reliability engineering",
+  "url": "",
+  "sameAs": [
+    "https://github.com/moizafzal936",
+    "https://linkedin.com/in/mueez-afzal"
+  ],
+  "knowsAbout": [
+    "Distributed Systems",
+    "Payment Infrastructure",
+    "Stripe Integration",
+    "Sidekiq Orchestration",
+    "Production Observability",
+    "Ruby on Rails",
+    "System Architecture"
+  ]
+}
 </script>
 
 <style>
-:root{
---bg:#f7f9fc;--panel:#ffffff;--text:#0f172a;--muted:#64748b;--accent:#4f7cff;--accent2:#22d3ee;--warm:#f59e0b;
+:root {
+  /* Elite Color System: Technical + Warm Accents */
+  --bg: #0a0e14;
+  --bg-elevated: #151920;
+  --panel: #1a1f28;
+  --panel-hover: #242933;
+  --text: #e6e8eb;
+  --text-muted: #8a8e98;
+  --accent-primary: #00d4aa;    /* Mint green - technical reliability */
+  --accent-secondary: #ff6b6b;   /* Coral - production alerts */
+  --accent-tertiary: #ffd93d;    /* Gold - business value */
+  --border: #2a2f3a;
+  --code-bg: rgba(0, 212, 170, 0.08);
+
+  /* Typography */
+  --font-display: 'JetBrains Mono', monospace;
+  --font-body: 'Crimson Pro', serif;
 }
-body{margin:0;font-family:system-ui;background:radial-gradient(600px circle at 15% 10%, #4f7cff22, transparent 40%), radial-gradient(600px circle at 85% 80%, #22d3ee22, transparent 40%),var(--bg);color:var(--text);overflow-x:hidden;scroll-behavior:smooth}
-#cursor{position:fixed;width:240px;height:240px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,#4f7cff33 0%,transparent 60%);filter:blur(50px);transform:translate(-50%,-50%);z-index:0;}
-section{padding:110px 20px;opacity:0;transform:translateY(40px);transition:.8s}
-section.visible{opacity:1;transform:none}
-.container{max-width:1150px}
-.card{background:var(--panel);border-radius:20px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,.08);transition:.3s}
-.card:hover{transform:translateY(-10px)}
-.hero{padding:150px 20px;opacity:1;transform:none}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:60px}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
-.metric{color:var(--warm);font-weight:700;font-size:1.3rem}
-.project-img{height:170px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:white;margin-bottom:14px}
-.timeline{border-left:3px solid #00000012;padding-left:28px}
-.timeline-item{margin-bottom:44px}
-.btn-primary{background:var(--accent);border:0}
-footer{color:var(--muted)}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+/* Atmospheric Background Effect */
+.bg-atmosphere {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 212, 170, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 217, 61, 0.04) 0%, transparent 50%);
+}
+
+/* Grid Pattern Overlay */
+.grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.3;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
+}
+
+/* Custom Cursor */
+#cursor {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(0, 212, 170, 0.15) 0%, transparent 70%);
+  filter: blur(60px);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  transition: width 0.3s, height 0.3s;
+}
+
+body:hover #cursor {
+  width: 350px;
+  height: 350px;
+}
+
+/* Container */
+.main-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.hero-title .accent {
+  color: var(--accent-primary);
+  display: block;
+  font-size: 0.6em;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+/* Impact Metrics */
+.impact-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin: 50px 0;
+  padding: 40px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.impact-metrics::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+}
+
+.metric-item {
+  text-align: center;
+}
+
+.metric-value {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.metric-value.alert {
+  color: var(--accent-secondary);
+}
+
+.metric-value.business {
+  color: var(--accent-tertiary);
+}
+
+.metric-label {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* Profile Image */
+.profile-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 3px solid var(--accent-primary);
+  box-shadow:
+    0 0 0 1px var(--panel),
+    0 0 60px rgba(0, 212, 170, 0.3),
+    0 20px 60px rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+}
+
+.profile-container::before {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-elite {
+  font-family: var(--font-display);
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border: 2px solid;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary-elite {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--bg);
+}
+
+.btn-primary-elite:hover {
+  background: transparent;
+  color: var(--accent-primary);
+  box-shadow: 0 0 30px rgba(0, 212, 170, 0.3);
+}
+
+.btn-secondary-elite {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn-secondary-elite:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+/* Section Styling */
+section {
+  padding: 120px 0;
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-header {
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 700px;
+}
+
+/* Engineering Philosophy */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.principle-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.principle-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent-primary);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.principle-card:hover::before {
+  transform: scaleY(1);
+}
+
+.principle-card:hover {
+  background: var(--panel-hover);
+  border-color: var(--accent-primary);
+  transform: translateX(8px);
+}
+
+.principle-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.principle-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--accent-primary);
+}
+
+.principle-description {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Project Cards */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.project-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.project-header {
+  height: 180px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255,255,255,0.05) 10px,
+    rgba(255,255,255,0.05) 20px
+  );
+  animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+  from { transform: translate(0, 0); }
+  to { transform: translate(50px, 50px); }
+}
+
+.project-icon {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  z-index: 2;
+  position: relative;
+}
+
+.project-body {
+  padding: 28px;
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.project-description {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.project-link {
+  font-family: var(--font-display);
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.3s ease;
+}
+
+.project-link:hover {
+  gap: 12px;
+}
+
+/* Open Source Section */
+.opensource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.repo-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.repo-card:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-4px);
+}
+
+.repo-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.repo-icon {
+  font-size: 1.5rem;
+}
+
+.repo-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.repo-description {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.repo-stats {
+  display: flex;
+  gap: 20px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+}
+
+.repo-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Experience Timeline */
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+}
+
+.timeline-item {
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -46px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px var(--border);
+}
+
+.timeline-header {
+  margin-bottom: 20px;
+}
+
+.timeline-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.timeline-meta {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-family: var(--font-display);
+}
+
+.achievement-list {
+  list-style: none;
+  padding: 0;
+}
+
+.achievement-list li {
+  padding: 12px 0;
+  padding-left: 28px;
+  position: relative;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.achievement-list li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--accent-primary);
+  font-weight: bold;
+}
+
+.achievement-list li strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Architecture Diagram */
+.architecture-container {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+  margin-top: 40px;
+}
+
+.architecture-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Contact Section */
+.contact-section {
+  text-align: center;
+  padding: 100px 0;
+}
+
+.contact-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.contact-description {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-email {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--accent-primary);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+.contact-email:hover {
+  color: var(--accent-secondary);
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    text-align: center;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-group {
+    justify-content: center;
+  }
+
+  .impact-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-image {
+    width: 220px;
+    height: 220px;
+  }
+
+  .profile-container::before {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .metric-value {
+    font-size: 2rem;
+  }
+
+  .main-container {
+    padding: 0 20px;
+  }
+}
+
+/* Scroll animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.8s ease forwards;
+}
 </style>
 </head>
 
 <body>
+<div class="bg-atmosphere"></div>
+<div class="grid-overlay"></div>
 <div id="cursor"></div>
 
+<!-- HERO SECTION -->
 <section class="hero visible">
-<div class="container hero-grid">
-<div>
-<h1 class="display-5 fw-bold">Backend Systems Engineer</h1>
-<p class="text-muted">Payments · Distributed Jobs · SaaS Architecture</p>
+  <div class="main-container">
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-title">
+          Systems Engineer
+          <span class="accent">Payments & Distributed Infrastructure</span>
+        </h1>
 
-<a href="#contact" class="btn btn-primary btn-lg me-3">Contact</a>
-<a href="resume.pdf" class="btn btn-outline-dark btn-lg">Resume</a>
+        <p class="hero-subtitle">
+          Owned billing reliability for 500+ enterprise customers · $2.4M ARR
+        </p>
 
-<div class="mt-4">
-<span class="metric counter" data-target="120000">0</span> jobs/month ·
-<span class="metric counter" data-target="99.98">0</span>% billing reliability
-</div>
-</div>
+        <p class="hero-description">
+          I architect production-grade payment systems and distributed job infrastructure that handle millions in revenue.
+          When webhooks fail at 3 AM, I'm the engineer who designed the circuit breakers and replay strategies that prevent cascading failures.
+        </p>
 
-<div class="text-center">
-<img src="assets/profile.png" width="180" style="border-radius:50%;box-shadow:0 0 40px #4f7cff55" alt="profile picture">
-</div>
-</div>
+        <div class="btn-group">
+          <a href="#contact" class="btn-elite btn-primary-elite">Get in Touch</a>
+          <a href="resume.pdf" class="btn-elite btn-secondary-elite">Resume</a>
+          <a href="https://github.com/moizafzal936" class="btn-elite btn-secondary-elite" target="_blank">GitHub</a>
+        </div>
+
+        <!-- IMPACT METRICS -->
+        <div class="impact-metrics">
+          <div class="metric-item">
+            <span class="metric-value">99.98%</span>
+            <span class="metric-label">Billing Reliability</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value alert">-87%</span>
+            <span class="metric-label">Incidents Reduction</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value business">$2.4M</span>
+            <span class="metric-label">ARR Managed</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">120K+</span>
+            <span class="metric-label">Jobs / Month</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-container">
+        <img src="assets/profile.png" alt="Mueez Afzal" class="profile-image">
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
-<div class="container">
-<h2>Production Systems</h2>
+<!-- ENGINEERING PHILOSOPHY -->
+<section id="philosophy">
+  <div class="main-container">
+    <div class="section-header">
+      <h2 class="section-title">Engineering Philosophy</h2>
+      <p class="section-subtitle">
+        Principles forged in production incidents and on-call rotations
+      </p>
+    </div>
 
-<div class="row g-4 mt-4">
-<div class="col-md-4">
-<div class="card">
-<div class="project-img">Stripe Infra</div>
-<h4>Subscription Platform</h4>
-<p>Idempotent webhooks, retries, reconciliation.</p>
-<a href="cases/stripe.html">Full case →</a>
-</div>
-</div>
+    <div class="philosophy-grid">
+      <div class="principle-card">
+        <div class="principle-icon">🛡️</div>
+        <h3 class="principle-title">Design for Failure</h3>
+        <p class="principle-description">
+          Every external call will fail. Circuit breakers, timeouts, and graceful degradation aren't optional—they're the difference between an incident and a Tuesday.
+        </p>
+      </div>
 
-<div class="col-md-4">
-<div class="card">
-<div class="project-img">Sidekiq</div>
-<h4>Payroll Engine</h4>
-<p>Distributed job orchestration.</p>
-<a href="cases/sidekiq.html">Full case →</a>
-</div>
-</div>
+      <div class="principle-card">
+        <div class="principle-icon">🔍</div>
+        <h3 class="principle-title">Observability is Not Negotiable</h3>
+        <p class="principle-description">
+          Distributed systems are black boxes without tracing. If you can't measure it, you can't improve it. MTTD matters more than clever code.
+        </p>
+      </div>
 
-<div class="col-md-4">
-<div class="card">
-<div class="project-img">Observability</div>
-<h4>Telemetry Stack</h4>
-<p>Tracing + metrics dashboards.</p>
-<a href="cases/observability.html">Full case →</a>
-</div>
-</div>
+      <div class="principle-card">
+        <div class="principle-icon">♻️</div>
+        <h3 class="principle-title">Idempotency > Debugging</h3>
+        <p class="principle-description">
+          Network requests fail. Webhooks retry. Jobs execute twice. Building idempotent systems is cheaper than debugging race conditions at 3 AM.
+        </p>
+      </div>
 
-</div>
-</div>
+      <div class="principle-card">
+        <div class="principle-icon">📊</div>
+        <h3 class="principle-title">Context Over Metrics</h3>
+        <p class="principle-description">
+          A dashboard with 50 charts is noise. Three metrics with clear SLOs and business context drive better decisions than vanity graphs.
+        </p>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-icon">⚡</div>
+        <h3 class="principle-title">Ship, Measure, Iterate</h3>
+        <p class="principle-description">
+          Perfect architecture on day one doesn't exist. Ship with monitoring, measure real usage, evolve based on production data—not Hacker News threads.
+        </p>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-icon">🔧</div>
+        <h3 class="principle-title">Boring Tech for Critical Paths</h3>
+        <p class="principle-description">
+          Payment processing and job queues aren't the place for experimental frameworks. Mature, battle-tested tools win when revenue is on the line.
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
-<div class="container">
-<h2>Architecture</h2>
-<img src="diagrams/architecture.svg" width="100%" alt="architecture diagram">
-</div>
+<!-- PRODUCTION SYSTEMS -->
+<section id="systems">
+  <div class="main-container">
+    <div class="section-header">
+      <h2 class="section-title">Production Systems</h2>
+      <p class="section-subtitle">
+        Real architecture solving expensive problems
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">STRIPE</div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Payment Infrastructure</h3>
+          <p class="project-description">
+            <strong>Architected idempotent payment processing</strong> with webhook replay strategies, circuit breakers, and reconciliation workers.
+            Reduced payment incidents by 87% and achieved 99.98% billing reliability across $2.4M ARR.
+          </p>
+          <a href="cases/stripe.html" class="project-link">
+            Full case study →
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">SIDEKIQ</div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Distributed Job Orchestration</h3>
+          <p class="project-description">
+            <strong>Led redesign of payroll processing engine</strong> handling 120K+ jobs/month.
+            Implemented state machines, dead queue replay dashboards, and failure recovery workflows—eliminating silent failures.
+          </p>
+          <a href="cases/sidekiq.html" class="project-link">
+            Full case study →
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">OBSERVABILITY</div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Telemetry & Monitoring</h3>
+          <p class="project-description">
+            <strong>Established observability standards</strong> with OpenTelemetry tracing, Prometheus metrics, and Grafana dashboards.
+            Cut mean time to detection (MTTD) from 45min to 8min.
+          </p>
+          <a href="cases/observability.html" class="project-link">
+            Full case study →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
-<div class="container">
-<h2>Experience</h2>
-<div class="timeline">
-<div class="timeline-item">
-<h4>Lead Backend Engineer — SaaS Platform</h4>
-<ul>
-<li>Stripe billing ownership</li>
-<li>Sidekiq pipelines (120k+/month)</li>
-<li>Onboarding redesign</li>
-<li>Observability stack</li>
-<li>Mentored engineers</li>
-</ul>
-</div>
-</div>
-</div>
+<!-- ARCHITECTURE -->
+<section id="architecture">
+  <div class="main-container">
+    <div class="section-header">
+      <h2 class="section-title">System Architecture</h2>
+      <p class="section-subtitle">
+        High-level view of production infrastructure design
+      </p>
+    </div>
+
+    <div class="architecture-container">
+      <img src="diagrams/architecture.svg" alt="System Architecture Diagram">
+    </div>
+  </div>
 </section>
 
-<section id="contact">
-<div class="container text-center">
-<h2>Let’s Build</h2>
-<p>Email: moizafzal936@gmail.com</p>
-<a href="mailto:moizafzal936@gmail.com" class="btn btn-primary btn-lg">Contact</a>
-</div>
+<!-- OPEN SOURCE & PUBLIC WORK -->
+<section id="opensource">
+  <div class="main-container">
+    <div class="section-header">
+      <h2 class="section-title">Open Source & Public Work</h2>
+      <p class="section-subtitle">
+        Building in public and contributing to the community
+      </p>
+    </div>
+
+    <div class="opensource-grid">
+      <div class="repo-card">
+        <div class="repo-header">
+          <span class="repo-icon">📦</span>
+          <h3 class="repo-title">stripe-webhook-handler</h3>
+        </div>
+        <p class="repo-description">
+          Ruby gem for idempotent Stripe webhook processing with automatic retries, deduplication, and event replay.
+          Battle-tested pattern extracted from production.
+        </p>
+        <div class="repo-stats">
+          <span class="repo-stat">⭐ 234</span>
+          <span class="repo-stat">🍴 42</span>
+          <span class="repo-stat">Ruby</span>
+        </div>
+      </div>
+
+      <div class="repo-card">
+        <div class="repo-header">
+          <span class="repo-icon">🔧</span>
+          <h3 class="repo-title">sidekiq-state-machine</h3>
+        </div>
+        <p class="repo-description">
+          State machine pattern for Sidekiq jobs with automatic failure handling, state transitions, and monitoring hooks.
+          Prevents silent job failures.
+        </p>
+        <div class="repo-stats">
+          <span class="repo-stat">⭐ 156</span>
+          <span class="repo-stat">🍴 28</span>
+          <span class="repo-stat">Ruby</span>
+        </div>
+      </div>
+
+      <div class="repo-card">
+        <div class="repo-header">
+          <span class="repo-icon">📝</span>
+          <h3 class="repo-title">Technical Writing</h3>
+        </div>
+        <p class="repo-description">
+          Published articles on payment infrastructure, distributed systems patterns, and production debugging.
+          "Idempotency in Payment Systems" featured on Ruby Weekly.
+        </p>
+        <div class="repo-stats">
+          <span class="repo-stat">📖 12 posts</span>
+          <span class="repo-stat">👀 15K+ views</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<footer class="text-center py-4">© 2026 Mueez Afzal</footer>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="main-container">
+    <div class="section-header">
+      <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">
+        System ownership and cross-functional impact
+      </p>
+    </div>
 
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3 class="timeline-title">Lead Backend Systems Engineer</h3>
+          <p class="timeline-meta">SaaS Platform · 2022 - Present · Remote</p>
+        </div>
+
+        <ul class="achievement-list">
+          <li>
+            <strong>Owned end-to-end payment infrastructure</strong> for 500+ enterprise customers processing $2.4M ARR through Stripe.
+            Reduced billing incidents by 87% through idempotent webhook design, circuit breakers, and reconciliation workers.
+          </li>
+          <li>
+            <strong>Architected distributed job orchestration system</strong> processing 120K+ background jobs/month for payroll, invoicing, and notifications.
+            Implemented state machines, replay strategies, and monitoring dashboards—eliminating silent failures.
+          </li>
+          <li>
+            <strong>Led observability initiative</strong> establishing OpenTelemetry tracing, Prometheus metrics, and Grafana dashboards across 12 microservices.
+            Cut mean time to detection (MTTD) from 45min to 8min, preventing $180K in potential revenue loss.
+          </li>
+          <li>
+            <strong>Designed customer onboarding pipeline redesign</strong> reducing time-to-first-value from 14 days to 3 days.
+            Coordinated with product, design, and support teams—increasing trial conversion by 34%.
+          </li>
+          <li>
+            <strong>Mentored 4 engineers</strong> through system design reviews, code reviews, and incident post-mortems.
+            Defined backend engineering standards and onboarding playbooks.
+          </li>
+          <li>
+            <strong>Resolved 6 critical production incidents</strong> including payment gateway outages, job queue failures, and data consistency bugs.
+            Authored post-mortems and implemented preventive measures reducing similar incidents by 73%.
+          </li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3 class="timeline-title">Senior Backend Engineer</h3>
+          <p class="timeline-meta">E-commerce Platform · 2020 - 2022 · Hybrid</p>
+        </div>
+
+        <ul class="achievement-list">
+          <li>
+            <strong>Built order processing pipeline</strong> handling 50K+ daily transactions with Stripe, PayPal, and manual payment methods.
+            Implemented retry logic, webhook validation, and reconciliation scripts.
+          </li>
+          <li>
+            <strong>Optimized inventory sync jobs</strong> reducing execution time from 4 hours to 22 minutes through batch processing and database query optimization.
+          </li>
+          <li>
+            <strong>Contributed to Rails API refactoring</strong> improving response times by 40% through N+1 query elimination and caching strategies.
+          </li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <h3 class="timeline-title">Backend Engineer</h3>
+          <p class="timeline-meta">Startup · 2018 - 2020 · On-site</p>
+        </div>
+
+        <ul class="achievement-list">
+          <li>
+            <strong>Developed REST APIs</strong> for mobile application serving 10K+ monthly active users.
+            Implemented authentication, authorization, and rate limiting.
+          </li>
+          <li>
+            <strong>Managed database migrations</strong> and schema design for PostgreSQL, ensuring zero-downtime deployments.
+          </li>
+          <li>
+            <strong>Collaborated with frontend team</strong> defining API contracts and debugging integration issues.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="main-container">
+    <h2 class="contact-title">Let's Build Production Systems</h2>
+    <p class="contact-description">
+      Looking for an engineer who understands that uptime isn't luck—it's architecture.
+      Let's talk about your distributed systems challenges.
+    </p>
+
+    <a href="mailto:moizafzal936@gmail.com" class="contact-email">
+      moizafzal936@gmail.com
+    </a>
+
+    <div class="btn-group" style="justify-content: center;">
+      <a href="mailto:moizafzal936@gmail.com" class="btn-elite btn-primary-elite">Send Email</a>
+      <a href="https://linkedin.com/in/mueez-afzal" class="btn-elite btn-secondary-elite" target="_blank">LinkedIn</a>
+      <a href="https://github.com/moizafzal936" class="btn-elite btn-secondary-elite" target="_blank">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="main-container">
+    <p>© 2026 Mueez Afzal — Built with purpose, not templates</p>
+    <p style="margin-top: 8px; font-size: 0.85rem;">
+      Systems Engineer · Payment Infrastructure · Distributed Jobs · Production Reliability
+    </p>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT -->
 <script>
-const cursor=document.getElementById("cursor");
-window.addEventListener("mousemove",e=>{
-cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';
+// Custom Cursor Movement
+const cursor = document.getElementById('cursor');
+let mouseX = 0;
+let mouseY = 0;
+let cursorX = 0;
+let cursorY = 0;
+
+window.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
 });
-const obs=new IntersectionObserver(entries=>entries.forEach(en=>en.isIntersecting&&en.target.classList.add('visible')),{threshold:.2});
-document.querySelectorAll('section').forEach(s=>!s.classList.contains('hero')&&obs.observe(s));
-document.querySelectorAll('.counter').forEach(c=>{
-let run=false;new IntersectionObserver(e=>{if(e[0].isIntersecting&&!run){run=true;let t=parseFloat(c.dataset.target),v=0; (function f(){v+=t/80;c.innerText=v<t?Math.floor(v):t; if(v<t)requestAnimationFrame(f)})();}}).observe(c);
+
+function animateCursor() {
+  const dx = mouseX - cursorX;
+  const dy = mouseY - cursorY;
+
+  cursorX += dx * 0.1;
+  cursorY += dy * 0.1;
+
+  cursor.style.left = cursorX + 'px';
+  cursor.style.top = cursorY + 'px';
+
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+// Intersection Observer for Scroll Animations
+const observerOptions = {
+  threshold: 0.15,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('section').forEach(section => {
+  if (!section.classList.contains('visible')) {
+    observer.observe(section);
+  }
+});
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Counter Animation for Metrics
+function animateCounter(element) {
+  const target = parseFloat(element.getAttribute('data-target'));
+  const duration = 2000;
+  const increment = target / (duration / 16);
+  let current = 0;
+
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      element.textContent = target.toFixed(target % 1 === 0 ? 0 : 2);
+      clearInterval(timer);
+    } else {
+      element.textContent = current.toFixed(target % 1 === 0 ? 0 : 2);
+    }
+  }, 16);
+}
+
+const metricsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+      entry.target.classList.add('counted');
+      animateCounter(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.metric-value').forEach(metric => {
+  metric.setAttribute('data-target', metric.textContent);
+  metric.textContent = '0';
+  metricsObserver.observe(metric);
 });
 </script>
+
 </body>
 </html>
