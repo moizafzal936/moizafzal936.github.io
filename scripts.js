@@ -1,35 +1,31 @@
-document.querySelectorAll('nav a').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target) return;
     e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
-// Example: Animate on Scroll when elements become visible
-const observer = new IntersectionObserver(entries => {
+// Shrink header on scroll
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+  header.style.borderBottomColor = window.scrollY > 10 ? 'var(--border)' : 'transparent';
+}, { passive: true });
+
+// Reveal elements on scroll
+const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('animate__fadeIn'); // Add fadeIn animation class when element is in view
-    } else {
-      entry.target.classList.remove('animate__fadeIn'); // Remove fadeIn animation class when element is out of view
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
     }
   });
-}, {
-  threshold: 0.5 // Trigger when 50% of element is visible
-});
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.animate__animated').forEach(element => {
-  observer.observe(element);
-});
-
-// Example: Adding more advanced animations on button hover
-document.querySelectorAll('.cta-button, .project-link, button').forEach(button => {
-  button.addEventListener('mouseover', () => {
-    button.classList.add('animate__pulse');
-  });
-  button.addEventListener('mouseout', () => {
-    button.classList.remove('animate__pulse');
-  });
+document.querySelectorAll('.work-card, .skill-group, .timeline-item, .hero-text, .avatar').forEach((el, i) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = `${i * 60}ms`;
+  revealObserver.observe(el);
 });

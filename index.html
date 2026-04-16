@@ -1,112 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mueez Afzal — Senior Rails Engineer</title>
+  <meta name="description" content="Senior Ruby on Rails engineer specialising in payment infrastructure, multi-tenant SaaS, and subscription billing systems.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mueez Afzal - Ruby on Rails Developer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  </head>
+  <!-- NAV -->
+  <header id="site-header">
+    <nav>
+      <span class="nav-logo">MA</span>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <body>
-    <header>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <section id="home" class="hero animate__animated animate__fadeIn">
-      <div class="hero-content">
-        <h1 class="animate__animated animate__bounceInDown">Experienced Ruby on Rails Developer</h1>
-        <img src="profile.png" alt="Mueez Afzal" class="profile-pic animate__animated animate__fadeInLeft">
-        <p class="animate__animated animate__fadeInUp">Hi, I’m Mueez Afzal. I create robust, scalable, and efficient web
-          applications.</p>
-        <a href="#projects" class="cta-button animate__animated animate__pulse animate__infinite">View My Work</a>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <img src="profile.png" alt="Mueez Afzal" class="avatar">
+      <div class="hero-text">
+        <p class="hero-label">Senior Software Engineer</p>
+        <h1>Mueez Afzal</h1>
+        <p class="hero-sub">
+          I build payment infrastructure and multi-tenant SaaS backends in Ruby on Rails.
+          Specialised in Stripe billing, subscription systems, and role-based access control.
+        </p>
+        <div class="hero-links">
+          <a href="https://github.com/moizafzal936" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+          <a href="https://linkedin.com/in/mueez-afzal-866b47177" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+          <a href="#contact" class="btn btn-primary">Contact me</a>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="about">
-      <h2 class="animate__animated animate__fadeInRight">About Me</h2>
-      <p class="animate__animated animate__fadeInLeft">With years of experience in web application development, I
-        specialize in creating secure APIs and optimizing SQL for peak performance. I’ve achieved significant
-        milestones, such as reducing loading times by 90%, which led to a 50% boost in user engagement. My dedication to
-        detail, organization, and efficiency makes me a valuable asset in any fast-paced environment.</p>
-    </section>
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-inner">
+      <h2 class="section-heading">What I've shipped</h2>
+      <p class="section-sub">Selected work from production systems — no toy demos.</p>
 
-    <section id="skills">
-      <h2 class="animate__animated animate__fadeInRight">Skills</h2>
-      <div class="skills-list">
-        <div class="skill animate__animated animate__jackInTheBox">Ruby on Rails</div>
-        <div class="skill animate__animated animate__jackInTheBox">REST APIs</div>
-        <div class="skill animate__animated animate__jackInTheBox">Hotwire</div>
-        <div class="skill animate__animated animate__jackInTheBox">StimulusJS</div>
-        <div class="skill animate__animated animate__jackInTheBox">JavaScript</div>
-        <div class="skill animate__animated animate__jackInTheBox">jQuery</div>
-        <div class="skill animate__animated animate__jackInTheBox">SQL</div>
-        <div class="skill animate__animated animate__jackInTheBox">Postgres</div>
-        <div class="skill animate__animated animate__jackInTheBox">Redis</div>
-        <div class="skill animate__animated animate__jackInTheBox">Sidekiq</div>
-        <div class="skill animate__animated animate__jackInTheBox">Git</div>
-        <div class="skill animate__animated animate__jackInTheBox">GitHub</div>
-        <div class="skill animate__animated animate__jackInTheBox">Heroku</div>
+      <div class="work-grid">
+
+        <div class="work-card">
+          <div class="work-card-header">
+            <span class="work-tag">Payments</span>
+            <span class="work-tag">Stripe</span>
+          </div>
+          <h3>Deal checkout & subscription billing</h3>
+          <p>
+            Designed an end-to-end deal checkout system: practice-facing deal cards, Stripe checkout
+            session creation, coupon and discount syncing to subscription items, and payment intent
+            activation. Enabled the business to run promotional pricing campaigns entirely through
+            the platform without manual Stripe intervention.
+          </p>
+          <ul>
+            <li>Payment intents, subscriptions, connected accounts, invoices</li>
+            <li>Prorated add-on calculation for consulting firm billing</li>
+            <li>Idempotent webhook handling for invoice payment events</li>
+          </ul>
+        </div>
+
+        <div class="work-card">
+          <div class="work-card-header">
+            <span class="work-tag">Architecture</span>
+            <span class="work-tag">Multi-tenancy</span>
+          </div>
+          <h3>Tenant data replication service</h3>
+          <p>
+            Built <code>ReplicateTenantResources</code> — a service that copies treatment plans and
+            associated records (appointments, surcharges, employee assignments) to newly onboarded
+            tenants. Includes fuzzy patient, treatment, and employee matching to handle inconsistent
+            data from dental practice management systems.
+          </p>
+          <ul>
+            <li>Handles data inconsistencies from multiple upstream PMS providers</li>
+            <li>Matcher services for patients, employees, and treatment records</li>
+            <li>Fallback conditions and lenient matching rules for edge cases</li>
+          </ul>
+        </div>
+
+        <div class="work-card">
+          <div class="work-card-header">
+            <span class="work-tag">Access Control</span>
+            <span class="work-tag">RBAC</span>
+          </div>
+          <h3>Employee permissions system</h3>
+          <p>
+            Restructured the RBAC layer: added permission groups, fixed ID mismatches across the
+            navigation system, and implemented auto-grant logic for employee-facing features. Added
+            <code>after_commit</code> cache busting to prevent stale ability objects from serving
+            incorrect access decisions after permission changes.
+          </p>
+          <ul>
+            <li>Category-level nav gates — blocks entire feature areas, not just individual pages</li>
+            <li>Cache invalidation across all active user sessions on permission change</li>
+            <li>Role-bypass mechanism for consulting firm users viewing client data</li>
+          </ul>
+        </div>
+
+        <div class="work-card">
+          <div class="work-card-header">
+            <span class="work-tag">State Machines</span>
+            <span class="work-tag">Background Jobs</span>
+          </div>
+          <h3>AASM state machine refactor</h3>
+          <p>
+            Replaced unsafe <code>eval</code>-based AASM state dispatching in the aftercare log
+            with direct method calls, eliminating a code-execution risk and fixing erroneous state
+            mutations. Fixed an N+1 user query in the employee cache-busting callback and extended
+            Sidekiq configuration for tenant-scoped appointment reminder processing.
+          </p>
+          <ul>
+            <li>Direct AASM method dispatch with guard clauses for invalid transitions</li>
+            <li>Eliminated redundant Redis round-trips on every employee state change</li>
+            <li>Tenant-scoped Sidekiq queues for background job isolation</li>
+          </ul>
+        </div>
+
+        <div class="work-card">
+          <div class="work-card-header">
+            <span class="work-tag">B2B Billing</span>
+            <span class="work-tag">Stripe</span>
+          </div>
+          <h3>Consulting firm invoicing</h3>
+          <p>
+            Built the consulting firm (B2B) billing layer: <code>FirmFeatureSponsorshipPricingRule</code>
+            model, add-on amount calculation, Stripe invoice generation, and a branded PDF invoice
+            mailer — enabling a separate B2B revenue stream without touching the core practice
+            subscription flow.
+          </p>
+          <ul>
+            <li>Polymorphic <code>paymentable</code> association for multiple billing subjects</li>
+            <li>Stripe coupon creation and discount application to subscription items</li>
+            <li>Logo-branded invoice mailer with magic-link payment requests</li>
+          </ul>
+        </div>
+
+        <div class="work-card">
+          <div class="work-card-header">
+            <span class="work-tag">Feature Subscriptions</span>
+            <span class="work-tag">Onboarding</span>
+          </div>
+          <h3>Paywall & feature availability</h3>
+          <p>
+            Implemented <code>FeatureAvailabilityService</code> enrollment source tracking,
+            free-trial AASM transition guards, and paywall visibility fixes — ensuring the subscription
+            state shown to users always matched actual Stripe state during the onboarding funnel.
+            Closed a Devise account-takeover vector for invitation-pending users.
+          </p>
+          <ul>
+            <li>Free trial to paid transition with correct AASM guards</li>
+            <li>Feature flag system integrated with Stripe subscription item state</li>
+            <li>Security: blocked password reset for invitation-pending accounts</li>
+          </ul>
+        </div>
+
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="projects">
-      <h2 class="animate__animated animate__fadeInRight">Projects</h2>
-      <div class="project-card animate__animated animate__zoomIn">
-        <h3>TeamCare Dental Dashboard</h3>
-        <p>Optimized database queries to reduce loading time by 99.9%, integrated external APIs ensuring 100% data
-          consistency, and developed an advanced role-based dashboard, leading to a 20% increase in user engagement.</p>
-        <a href="https://github.com/yourgithub" class="project-link">View on GitHub</a>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <h2 class="section-heading">Skills</h2>
+
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Languages</h4>
+          <div class="tag-list">
+            <span class="tag">Ruby</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Frameworks & Libraries</h4>
+          <div class="tag-list">
+            <span class="tag">Ruby on Rails</span>
+            <span class="tag">Sidekiq</span>
+            <span class="tag">AASM</span>
+            <span class="tag">CanCanCan</span>
+            <span class="tag">Devise</span>
+            <span class="tag">Turbo / Hotwire</span>
+            <span class="tag">Stimulus</span>
+            <span class="tag">ActiveAdmin</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Payments</h4>
+          <div class="tag-list">
+            <span class="tag">Stripe Subscriptions</span>
+            <span class="tag">Payment Intents</span>
+            <span class="tag">Stripe Connect</span>
+            <span class="tag">Webhooks</span>
+            <span class="tag">Invoicing</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Data & Infrastructure</h4>
+          <div class="tag-list">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Redis</span>
+            <span class="tag">AWS (EC2 / RDS / S3)</span>
+            <span class="tag">Heroku</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Patterns</h4>
+          <div class="tag-list">
+            <span class="tag">Multi-tenant SaaS</span>
+            <span class="tag">Service objects</span>
+            <span class="tag">RBAC</span>
+            <span class="tag">State machines</span>
+            <span class="tag">REST APIs</span>
+          </div>
+        </div>
       </div>
-      <!-- More project cards as needed -->
-    </section>
+    </div>
+  </section>
 
-    <section id="experience">
-      <h2 class="animate__animated animate__fadeInRight">Experience</h2>
-      <div class="job animate__animated animate__flipInX">
-        <h3>Full-Stack Ruby on Rails Developer at TeamCare Dental</h3>
-        <p>Aug 2021 - Present</p>
-        <ul>
-          <li>Reduced loading time by 99.9% through database query optimization.</li>
-          <li>Integrated external APIs with 100% data consistency.</li>
-          <li>Developed a role-based dashboard, increasing user engagement by 20%.</li>
-        </ul>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-inner">
+      <h2 class="section-heading">Experience</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-date">Aug 2021 — Present</span>
+            <span class="timeline-location">Remote</span>
+          </div>
+          <div class="timeline-content">
+            <h3>Senior Software Engineer</h3>
+            <p class="timeline-company">TeamCare — B2B dental practice management SaaS</p>
+            <p>
+              Backend engineer on the core platform team. Primary focus on the billing and payments
+              layer, multi-tenant data architecture, and the permissions system. Working across a
+              Rails 6 monolith serving hundreds of dental practices.
+            </p>
+            <ul>
+              <li>Owns the Stripe billing integration — subscriptions, payment intents, connected accounts, invoices, discounts</li>
+              <li>Built the consulting firm B2B billing layer as a new revenue stream</li>
+              <li>Designed tenant data replication service for new practice onboarding</li>
+              <li>Restructured employee permissions system including cache invalidation and category-level nav gates</li>
+              <li>Closed a Devise-based account-takeover vector in the invitation flow</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <!-- More job entries as needed -->
-    </section>
 
-    <section id="contact">
-      <h2 class="animate__animated animate__fadeInRight">Contact</h2>
-      <form action="send_email.php" method="post" class="animate__animated animate__fadeInLeft">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
-        <button type="submit">Get in Touch</button>
-      </form>
-      <p>Email: <a href="mailto:moizafzal936@gmail.com">moizafzal936@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/mueez-afzal-866b47177">linkedin.com/in/mueez-afzal-866b47177</a></p>
-    </section>
+    </div>
+  </section>
 
-    <footer class="animate__animated animate__fadeInUp">
-      <p>&copy; 2024 Mueez Afzal</p>
-      <div class="social-links">
-        <a href="https://linkedin.com/in/mueez-afzal-866b47177">LinkedIn</a>
-        <a href="https://github.com/yourgithub">GitHub</a>
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner contact-inner">
+      <h2 class="section-heading">Get in touch</h2>
+      <p class="section-sub">
+        Open to senior backend roles at product companies — especially anything involving
+        payments, billing infrastructure, or multi-tenant SaaS. Remote preferred.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:moizafzal936@gmail.com" class="btn btn-primary">moizafzal936@gmail.com</a>
+        <a href="https://linkedin.com/in/mueez-afzal-866b47177" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+        <a href="https://github.com/moizafzal936" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <script src="scripts.js"></script>
-  </body>
+  <!-- FOOTER -->
+  <footer>
+    <p>Mueez Afzal &copy; 2025</p>
+  </footer>
 
+  <script src="scripts.js"></script>
+</body>
 </html>
